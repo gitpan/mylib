@@ -1,0 +1,14 @@
+NAME
+    mylib - add private lib to the module search path
+
+DESCRIPTION
+    This is just a convenient wrapper around FindBin and lib that will
+    prepend the lib directory either found in the directory of the script or
+    its parent directory. If neither of these locations contain a lib
+    directory it will die.
+
+COPYRIGHT
+    Copyright 2008 Gisle Aas.
+
+    This library is free software; you can redistribute it and/or modify it
+    under the same terms as Perl itself.

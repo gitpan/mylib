@@ -1,9 +1,11 @@
 package mylib;
 
-use vars qw($VERSION @EXPORT_OK $Prefix);
-$VERSION = "0.01";
+use strict;
+use vars qw($VERSION @EXPORT_OK $Prefix $Lib);
 
-require Exporter;
+$VERSION = "0.02";
+
+use Exporter 'import';
 @EXPORT_OK = qw($Prefix $Bin $Lib);
 
 use FindBin qw($Bin);

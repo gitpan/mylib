@@ -1,17 +1,19 @@
 package mylib;
 
 use strict;
-use vars qw($VERSION @EXPORT_OK $Prefix $Lib);
+use vars qw($VERSION @ISA @EXPORT_OK $Prefix $Lib $Etc);
 
-$VERSION = "0.02";
+$VERSION = "1.00";
 
-use Exporter 'import';
-@EXPORT_OK = qw($Prefix $Bin $Lib);
+require Exporter;
+@ISA = ('Exporter');
+@EXPORT_OK = qw($Prefix $Bin $Lib $Etc);
 
 use FindBin qw($Bin);
 
 $Prefix = $Bin;
 $Lib = "$Prefix/lib";
+$Etc = "$Prefix/etc";
 
 unless (-d $Lib) {
     require File::Basename;
@@ -35,14 +37,23 @@ mylib - add private lib to the module search path
 
 =head1 SYNOPSIS
 
+  #!/usr/bin/perl -w
+
+  use strict;
   use mylib;
+
+  use Private::Module;
 
 =head1 DESCRIPTION
 
 This is just a convenient wrapper around L<FindBin> and L<lib> that
-will prepend the F<lib> directory either found in the directory of the
-script or its parent directory.  If neither of these locations contain
-a F<lib> directory it will die.
+will prepend to perl's search path the F<lib> directory either found
+in the directory of the script or its parent directory.  If neither of
+these locations contain a F<lib> directory it will die.
+
+This makes it easy to create a collection of scripts that share private
+modules (not to be installed with perl) using the traditional Unix
+layout of sibling F<bin>, F<lib>, F<man>, F<etc>,... directories.
 
 The following variables can be imported:
 
@@ -55,6 +66,10 @@ This is the directory where the F<lib> directory is found.
 =item C<$Lib>
 
 This is the same as C<"$Prefix/lib">.
+
+=item C<$Etc>
+
+This is the same as C<"$Prefix/etc">.
 
 =item C<$Bin>
 

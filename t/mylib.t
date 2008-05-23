@@ -1,13 +1,13 @@
 #!perl -w
 
 use Test;
-plan tests => 4;
+plan tests => 5;
 
-use mylib qw($Prefix $Bin $Lib);
+use mylib qw($Prefix $Bin $Lib $Etc);
 use Foo;
 
 ok($Foo::VERSION);
 ok($Prefix);
 ok("$Prefix/lib", $Lib);
+ok("$Prefix/etc", $Etc);
 ok($Bin);
-

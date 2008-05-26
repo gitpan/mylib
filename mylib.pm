@@ -3,7 +3,7 @@ package mylib;
 use strict;
 use vars qw($VERSION @ISA @EXPORT_OK $Prefix $Lib $Etc);
 
-$VERSION = "1.00";
+$VERSION = "1.01";
 
 require Exporter;
 @ISA = ('Exporter');
@@ -13,7 +13,6 @@ use FindBin qw($Bin);
 
 $Prefix = $Bin;
 $Lib = "$Prefix/lib";
-$Etc = "$Prefix/etc";
 
 unless (-d $Lib) {
     require File::Basename;
@@ -23,6 +22,8 @@ unless (-d $Lib) {
         die "Can't find lib in either $Bin or $Prefix, stopped";
     }
 }
+
+$Etc = "$Prefix/etc";
 
 require lib;
 lib->import($Lib);

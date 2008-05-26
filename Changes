@@ -1,3 +1,9 @@
+2008-05-26 v1.01
+
+    Wrong $Etc when lib in parent directory [RT#36188]
+
+
+
 2008-05-23 v1.00
 
     Exporter tweak for compatibility with older perls.

@@ -1,3 +1,9 @@
+2008-06-05 v1.02
+
+    Use $RealBin as the starting point for locating the prefix.
+
+
+
 2008-05-26 v1.01
 
     Wrong $Etc when lib in parent directory [RT#36188]

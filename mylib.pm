@@ -1,17 +1,17 @@
 package mylib;
 
 use strict;
-use vars qw($VERSION @ISA @EXPORT_OK $Prefix $Lib $Etc);
+use vars qw($VERSION @ISA @EXPORT_OK $Prefix $Bin $Lib $Etc);
 
-$VERSION = "1.01";
+$VERSION = "1.02";
 
 require Exporter;
 @ISA = ('Exporter');
 @EXPORT_OK = qw($Prefix $Bin $Lib $Etc);
 
-use FindBin qw($Bin);
+use FindBin qw($RealBin);
 
-$Prefix = $Bin;
+$Prefix = $Bin = $RealBin;
 $Lib = "$Prefix/lib";
 
 unless (-d $Lib) {
@@ -74,7 +74,8 @@ This is the same as C<"$Prefix/etc">.
 
 =item C<$Bin>
 
-This is the same as C<$FindBin::Bin>.
+This will normally either be C<$Prefix> or C<"$Prefix/bin">.  It is
+the same as C<$FindBin::RealBin>.
 
 =back
 
